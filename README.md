@@ -1,0 +1,3 @@
+#   Simple Go Tutorial
+
+Following along https://youtu.be/jFfo23yIWac?si=x35bpr67NeoewIF0
