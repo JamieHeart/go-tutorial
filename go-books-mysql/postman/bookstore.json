@@ -22,13 +22,13 @@
 					"raw": "{\n    \"name\":\"The Yellow River\",\n    \"author\":\"I. P. Freely\",\n    \"publication\":\"CrazyTown Publishing\",\n    \"isbn\":\"1234-4321-91\"\n\n}"
 				},
 				"url": {
-					"raw": "localhost:8889/books",
+					"raw": "localhost:8889/book",
 					"host": [
 						"localhost"
 					],
 					"port": "8889",
 					"path": [
-						"books"
+						"book"
 					]
 				}
 			},
@@ -60,6 +60,38 @@
 					"port": "8889",
 					"path": [
 						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Book By Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8889/book/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8889",
+					"path": [
+						"book",
+						"1"
 					]
 				}
 			},
