@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "f20f4bec-7991-4c6d-9a30-ca6aeb4e56ea",
+		"name": "GO Tutorial Stuff",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27228854"
+	},
+	"item": [
+		{
+			"name": "Create Movie",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"isbn\": \"8675309\",\n    \"title\": \"Jenny\",\n    \"director\": {\n        \"firstname\": \"Tommy\",\n        \"lastname\": \"TuTone\"\n    }\n}"
+				},
+				"url": {
+					"raw": "localhost:8888/movies",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Movie",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"isbn\": \"5882300\",\n    \"title\": \"Empire\",\n    \"director\": {\n        \"firstname\": \"Carpet\",\n        \"lastname\": \"Stores\"\n    }\n}"
+				},
+				"url": {
+					"raw": "localhost:8888/movies/0",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"movies",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Movie",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8888/movies/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"movies",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
