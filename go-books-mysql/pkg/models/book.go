@@ -1,6 +1,8 @@
 package models
 
 import (
+	"errors"
+
 	"github.com/jamieheart/go-books-mysql/pkg/config"
 	"github.com/jinzhu/gorm"
 )
@@ -21,14 +23,26 @@ func Init() {
 	db.AutoMigrate(&Book{})
 }
 
-func (b *Book) CreateBook() *Book {
+func (b *Book) CreateBook() (*Book, error) {
 	db.NewRecord(b)
-	db.Create(&b)
-	return b
+	rows := db.Create(&b)
+	if rows.RowsAffected == 0 {
+		return b, errors.New("duplicate entry")
+	}
+	return b, nil
 }
 
 func GetAllBooks() []Book {
 	var books []Book
 	db.Find(&books)
 	return books
+}
+
+func GetBookById(id string) (Book, error) {
+	var book Book
+	rows := db.Find(&book, id)
+	if rows.RowsAffected == 0 {
+		return book, errors.New("not found")
+	}
+	return book, nil
 }
