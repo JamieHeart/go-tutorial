@@ -64,6 +64,23 @@ func createMovie(w http.ResponseWriter, r *http.Request) {
 
 func updateMovie(w http.ResponseWriter, r *http.Request) {
 	setJsonResponse(w)
+	params := mux.Vars(r)
+	var newMovie Movie
+	var found bool = false
+
+	for index, item := range movies {
+		if item.ID == params["id"] {
+			found = true
+			_ = json.NewDecoder(r.Body).Decode(&newMovie)
+			newMovie.ID = item.ID
+			movies[index] = newMovie
+		}
+	}
+	if found {
+		json.NewEncoder(w).Encode(newMovie)
+	} else {
+		http.Error(w, "Movie not found", http.StatusNotFound)
+	}
 
 }
 
@@ -71,6 +88,7 @@ func deleteMovie(w http.ResponseWriter, r *http.Request) {
 	setJsonResponse(w)
 	params := mux.Vars(r)
 	var match bool = false
+
 	for index, item := range movies {
 		if item.ID == params["id"] {
 			match = true
@@ -83,9 +101,8 @@ func deleteMovie(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	if match {
-		json.NewEncoder(w).Encode(movies)
+		w.WriteHeader(http.StatusNoContent)
 	} else {
-		log.Println("not found")
 		http.Error(w, "Movie not found", http.StatusNotFound)
 	}
 }

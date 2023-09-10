@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"isbn\": \"8675309\",\n\"title\": \"Jenny\",\n\"director\": {\n\"firstname\": \"Tommy\",\n\"lastname\": \"TuTone\"\n}\n}"
+					"raw": "{\n    \"isbn\": \"8675309\",\n    \"title\": \"Jenny\",\n    \"director\": {\n        \"firstname\": \"Tommy\",\n        \"lastname\": \"TuTone\"\n    }\n}"
 				},
 				"url": {
 					"raw": "localhost:8888/movies",
@@ -29,6 +29,35 @@
 					"port": "8888",
 					"path": [
 						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Movie",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"isbn\": \"5882300\",\n    \"title\": \"Empire\",\n    \"director\": {\n        \"firstname\": \"Carpet\",\n        \"lastname\": \"Stores\"\n    }\n}"
+				},
+				"url": {
+					"raw": "localhost:8888/movies/0",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"movies",
+						"0"
 					]
 				}
 			},
