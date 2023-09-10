@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "60b9688f-7a72-42be-95ed-25128b268dec",
+		"name": "GO Bookstore Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27228854"
+	},
+	"item": [
+		{
+			"name": "Create Book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"The Yellow River\",\n    \"author\":\"I. P. Freely\",\n    \"publication\":\"CrazyTown Publishing\",\n    \"isbn\":\"1234-4321-91\"\n\n}"
+				},
+				"url": {
+					"raw": "localhost:8889/books",
+					"host": [
+						"localhost"
+					],
+					"port": "8889",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List All Books",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Antlers in the Treetops\",\n    \"author\":\"Whogoosed Thumoose\",\n    \"publication\":\"CrazyTown Publishing\",\n    \"isbn\":\"1234-4321-90\"\n\n}"
+				},
+				"url": {
+					"raw": "localhost:8889/books",
+					"host": [
+						"localhost"
+					],
+					"port": "8889",
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

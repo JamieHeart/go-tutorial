@@ -9,5 +9,6 @@ import (
 )
 
 var RegisterBookRoutes = func(router *mux.Router) {
-	router.HandleFunc(utils.ROUTE_BOOK, controllers.CreateBook).Methods(http.MethodGet)
+	router.HandleFunc(utils.ROUTE_BOOK, controllers.CreateBook).Methods(http.MethodPost)
+	router.HandleFunc(utils.ROUTE_BOOK, controllers.GetAllBooks).Methods(http.MethodGet)
 }
