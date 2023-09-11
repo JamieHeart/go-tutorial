@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"strconv"
 
 	"github.com/jamieheart/go-books-mysql/pkg/config"
 	"github.com/jinzhu/gorm"
@@ -10,7 +11,7 @@ import (
 var db *gorm.DB
 
 type Book struct {
-	gorm.Model         //	why is the id retruning wrong via the api, but correct in the db?
+	gorm.Model
 	Name        string `gorm:"" json:"name"`
 	Author      string `json:"author"`
 	Publication string `json:"publication"`
@@ -23,13 +24,38 @@ func Init() {
 	db.AutoMigrate(&Book{})
 }
 
-func (b *Book) CreateBook() (*Book, error) {
+func (b *Book) CreateBook() (*Book, error) { //	TODO	:	https://github.com/JamieHeart/go-tutorial/issues/6 - Losing PK Space on conflict
 	db.NewRecord(b)
 	rows := db.Create(&b)
-	if rows.RowsAffected == 0 {
-		return b, errors.New("duplicate entry")
+	if rows.RowsAffected == 0 { //	TODO: https://github.com/JamieHeart/go-tutorial/issues/5
+		return b, errors.New("duplicate entry") //	OOPS! This means if you delete a book you can not add it again
 	}
 	return b, nil
+}
+
+func DeleteBook(id string) error {
+	book, err := GetBookById(id)
+	if err != nil {
+		return err
+	}
+	db.Delete(book)
+	return nil
+}
+
+func (b *Book) UpdateBook() (*Book, error) {
+	book, err := GetBookById(strconv.FormatUint(uint64(b.ID), 10))
+	if err != nil {
+		return &book, err
+	}
+
+	book.Author = b.Author
+	book.Isbn = b.Isbn
+	book.Name = b.Name
+	book.Publication = b.Publication
+
+	db.Save(&book)
+
+	return &book, nil
 }
 
 func GetAllBooks() []Book {

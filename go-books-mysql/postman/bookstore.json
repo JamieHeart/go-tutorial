@@ -35,6 +35,64 @@
 			"response": []
 		},
 		{
+			"name": "Update Book",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"The Yellow River\",\n    \"author\":\"I. P. Freely\",\n    \"publication\":\"CrazyTown Publishing\",\n    \"isbn\":\"1234-4321-91\"\n\n}"
+				},
+				"url": {
+					"raw": "localhost:8889/book/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8889",
+					"path": [
+						"book",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Book",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8889/book/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8889",
+					"path": [
+						"book",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "List All Books",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
