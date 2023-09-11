@@ -21,7 +21,6 @@ var SQL_CONNECTION string = SQL_USERNAME + ":" + SQL_PASSWORD + "@tcp(" + SQL_AD
 
 func ParseBody(r *http.Request, x interface{}) {
 	if body, err := io.ReadAll(r.Body); err == nil {
-		println(body)
 		if err := json.Unmarshal([]byte(body), x); err == nil {
 			return
 		} else {
